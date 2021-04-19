@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int i, first, last, mid, n, search1,search2, array[100];
+int i, first, last, mid, n, search1,search2, array[100],n;
 
-int linearSearch(int);
-int binarySearch(int);
+void linearSearch(int);
 
 
 int main()
 {
-  int choice,li,bi;
-  double resl,resb;
+  int choice;
+  double rl,rb;
   clock_t start, end;
-  for (i = 0; i < 100; i++)
+  printf("Enter the number of elements of the array\n");
+  scanf("%d",&n);
+  for (i = 0; i < n; i++)
   {
-      array[i]= rand ()%120;
+      array[i]= rand ()%200;
       printf("%d ", array[i]);
   }
   printf("\n");
@@ -28,26 +29,20 @@ int main()
         case 1: printf("Enter value to find :");
                 scanf("%d", &search1);
                 start = clock();
-                li=linearSearch(search1);
+                linearSearch(search1);
                 end = clock();
-                resl = ((double) (end - start)) / CLOCKS_PER_SEC;
-                if(li==1)
-                {
-                    printf("\nTime taken by linear search : %lf\n", resl);
-                }
+                rl = ((double) (end - start)) / CLOCKS_PER_SEC;
+                printf("\nTime taken by Linear Search : %lf\n", rl);
                 break;
 
         case 2: printf("Enter value to find :");
                 scanf("%d", &search2);
                 bubbleSort(array, 100);
                 start = clock();
-                bi=binarySearch(search2);
+                binarySearch(array,0,n-1,search2);
                 end = clock();
-                resb = ((double) (end - start)) / CLOCKS_PER_SEC;
-                if(bi==1)
-                {
-                    printf("\nTime taken by linear search : %lf\n", resb);
-                }
+                rb = ((double) (end - start)) / CLOCKS_PER_SEC;
+                printf("\nTime taken by Binary Search : %lf\n", rb);
                 break;
         
         case 3:exit(1);
@@ -58,31 +53,19 @@ int main()
   }
 }
 
-int binarySearch(int ele)
+int binarySearch(int arr[], int first,int last, int ele) 
 {
-  first = 0;
-  last = 99;
-  mid = (first+last-1)/2;
-
-  while (first <= last) {
-    if (array[mid] < ele)
-      first = mid + 1;
-    else if (array[mid] == ele) {
-      printf("\n\n%d found at location %d.\n", ele, mid+1);
-      return 1;
-      break;
-    }
-    else
-      last = mid - 1;
-
-    mid = (first + last)/2;
-  }
-  if (first > last)
-  {
-    printf("Not found! %d isn't present in the list.\n", ele);
-    return 0;
-  }
     
+    if( first<= last) {
+        int mid = first + (last-first)/2;
+        if(arr[mid]==ele) {
+            return mid;
+        }
+        else if(arr[mid]>ele)
+            return binarySearch(arr,first,mid-1,ele);
+        else
+            return binarySearch(arr,mid+1,last,ele);
+    }
 }
 
 void swap(int *x, int *y)
@@ -101,10 +84,10 @@ void bubbleSort(int arr[], int n)
               swap(&arr[j], &arr[j+1]);
 }
 
-int linearSearch(int ele)
+void linearSearch(int ele)
 {
     int flag=0;
-    for(i=0;i<100;i++)
+    for(i=0;i<n;i++)
     {
         if(array[i]==ele)
         {
@@ -116,11 +99,9 @@ int linearSearch(int ele)
     if(flag==1)
     {
         printf("%d found at location %d.\n",ele,i+1);
-        return 1;
     }
     else
     {
         printf("Not found! %d isn't present in the list.\n", ele);
-        return 0;
     }
 }
