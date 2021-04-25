@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int i, first, last, mid, n, search1,search2, array[100],n;
-
-void linearSearch(int);
+int i, first, last, mid, n, search1,search2;
 
 
 int main()
 {
+
   int choice;
   double rl,rb;
   clock_t start, end;
   printf("Enter the number of elements of the array\n");
   scanf("%d",&n);
+  int array[n];
   for (i = 0; i < n; i++)
   {
       array[i]= rand ()%200;
@@ -29,7 +29,7 @@ int main()
         case 1: printf("Enter value to find :");
                 scanf("%d", &search1);
                 start = clock();
-                linearSearch(search1);
+                linearSearch(array,search1);
                 end = clock();
                 rl = ((double) (end - start)) / CLOCKS_PER_SEC;
                 printf("\nTime taken by Linear Search : %lf\n", rl);
@@ -84,12 +84,12 @@ void bubbleSort(int arr[], int n)
               swap(&arr[j], &arr[j+1]);
 }
 
-void linearSearch(int ele)
+void linearSearch(int arr[],int ele)
 {
     int flag=0;
     for(i=0;i<n;i++)
     {
-        if(array[i]==ele)
+        if(arr[i]==ele)
         {
             flag=1;
             break;
