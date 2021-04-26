@@ -46,7 +46,7 @@ int main()
   int array[n],array1[n];
   for (i = 0; i < n; i++)
   {
-      array[i]= rand ()%200;
+      array[i]= rand ()%1000;
       array1[i]=array[i];
       printf("%d ", array[i]);
   }
