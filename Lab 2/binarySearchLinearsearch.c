@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int i, first, last, mid, n, search1,search2;
+int  first, last, mid, n, search1,search2,i;
 
 
 int main()
