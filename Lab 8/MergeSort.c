@@ -68,7 +68,7 @@ void main()
 	for(int n=100;n<601;n=n+100)
 	{
 	    int array[n];
-        for (i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
            array[i]= rand ()%1000;
         }
