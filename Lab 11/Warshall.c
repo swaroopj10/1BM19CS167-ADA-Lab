@@ -18,9 +18,9 @@ void floyd(int A[][4])
      for(j=0;j<4;j++)
         P[i][j]=A[i][j];
 
-  for(k=0;k<4;k++)            // For changing the path matrix step by step
-      for(i=0;i<4;i++)       // For Traversing the columns
-          for(j=0;j<4;j++)  // For Traversing the row
+  for(k=0;k<4;k++)            
+      for(i=0;i<4;i++)       
+          for(j=0;j<4;j++)  
                if(P[i][k]==1 && P[k][j]==1)
                  P[i][j]=1;
 
