@@ -12,7 +12,7 @@ int min(int i,int j)
 
 void floyd(int A[][4])
 {
-  int i,j,k,P[4][4];        // For Copying the adjacency matrix to the path matrix
+  int i,j,k,P[4][4];        
 
   for(i=0;i<4;i++)
      for(j=0;j<4;j++)
@@ -27,7 +27,7 @@ void floyd(int A[][4])
    printSolution(P);
 }
 
-void printSolution(int dist[][V])   // Print the Shortest pat matrix
+void printSolution(int dist[][V])   
 {
     printf ("The following matrix shows the shortest distances"
             " between every pair of vertices \n");
